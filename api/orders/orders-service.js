@@ -70,7 +70,7 @@ module.exports = {
     const OrderId = GenerateOrderId(data.UserID, data.SellerID);
     try {
       await Connect.beginTransaction(function (err) {
-        if (err) { throw err; }
+        if (err) { /* throw err; */ }
         Connect.query('CALL CreateOrder(?,?,?,?,?,?,?,?,?,?,?);',
           [
             OrderId,
@@ -85,9 +85,9 @@ module.exports = {
             data.OrderCreationTime,
             0], function (error, results, fields) {
               if (error) {
-                return Connect.rollback(function () {
+                return Connect.rollback(/* function () {
                   throw error;
-                });
+                } */);
               }
 
               //var log = 'Post ' + results.insertId + ' added';
