@@ -18,4 +18,6 @@ app.use('/api/orders', OrdersRouter);
 app.use('/api', (req, res) => {
     res.status(200).send({ 'code': 1, 'message': 'WhatsssUUp' });
 });
-app.listen(3000, () => console.log('SERVER UP & Running ....'));
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log('SERVER UP & Running .... ' + port));
